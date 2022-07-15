@@ -20,25 +20,25 @@ namespace Business.Concrete
 
         public void Add(Product entity)
         {
-            throw new NotImplementedException();
+            _productDal.Add(entity);
         }
 
         public void Delete(Product entity)
         {
-            throw new NotImplementedException();
+            _productDal.Delete(entity);
         }
         public void Update(Product entity)
         {
-            throw new NotImplementedException();
+            _productDal.Update(entity);
         }
         public Product GetById(int id)
         {
-            throw new NotImplementedException();
+            return _productDal.GetById(id);
         }
 
         public List<Product> GetList()
         {
-            throw new NotImplementedException();
+            return _productDal.GetList();
         }
 
        
