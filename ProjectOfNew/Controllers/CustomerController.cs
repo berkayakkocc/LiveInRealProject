@@ -11,28 +11,27 @@ using System.Threading.Tasks;
 
 namespace LiveInRealProject.Controllers
 {
-    public class ProductController : Controller
+    public class CustomerController : Controller
     {
-        ProductManager productManager = new ProductManager(new EfProductDal());
+        CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
         public IActionResult Index()
         {
-            var values = productManager.GetList();
+            var values = customerManager.GetList();
             return View(values);
         }
         [HttpGet]
-        public IActionResult AddProduct()
+        public IActionResult AddCustomer()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult AddProduct(Product product)
+        public IActionResult AddCustomer(Customer customer)
         {
-
-            ProductValidator validationRules = new ProductValidator();
-            ValidationResult results = validationRules.Validate(product);
+            CustomerValidator validationRules = new CustomerValidator();
+            ValidationResult results = validationRules.Validate(customer);
             if (results.IsValid)
             {
-                productManager.Add(product);
+                customerManager.Add(customer);
                 return RedirectToAction("Index");
             }
             else
@@ -41,27 +40,25 @@ namespace LiveInRealProject.Controllers
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
+                return View();
             }
-            return View();
         }
-
-        public IActionResult DeleteProduct(int id)
+        public IActionResult DeleteCustomer(int id)
         {
-            var value = productManager.GetById(id);
-            productManager.Delete(value);
+            var value = customerManager.GetById(id);
+            customerManager.Delete(value);
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public IActionResult UpdateProduct(int id)
+        public IActionResult UpdateCustomer(int id)
         {
-            var value = productManager.GetById(id);
-
+            var value = customerManager.GetById(id);
             return View(value);
         }
         [HttpPost]
-        public IActionResult UpdateProduct(Product product)
+        public IActionResult UpdateCustomer(Customer customer)
         {
-            productManager.Update(product);
+            customerManager.Update(customer);
             return RedirectToAction("Index");
         }
     }

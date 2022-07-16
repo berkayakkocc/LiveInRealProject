@@ -7,12 +7,12 @@
 
 <table class=" table table-bordered">
     <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Stock</th>
-        <th>Delete</th>
-        <th>Update</th>
+        <th style="color:red" class="align-top">#</th>
+        <th style="color:red">Name</th>
+        <th style="color:red">Price</th>
+        <th style="color:red">Stock</th>
+        <th style="color:red">Delete</th>
+        <th style="color:red">Update</th>
     </tr>
     @foreach (var item in Model)
     {
@@ -21,8 +21,8 @@
             <td>@item.Name</td>
             <td>@item.Price</td>
             <td>@item.Stock</td>
-            <td><a href="#" class="btn-outline-danger">Delete</a></td>
-            <td><a href="#" class="btn-outline-success">Update</a></td>
+            <td><a href="/Product/DeleteProduct/@item.Id" class="btn btn-outline-danger">Delete</a></td>
+            <td><a href="/Product/UpdateProduct/@item.Id" class="btn btn-outline-success">Update</a></td>
            
         </tr>
 
