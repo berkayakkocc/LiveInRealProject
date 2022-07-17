@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-  public  interface ICustomerDal:IGenericDal<Customer>
+   public interface IJobDal:IGenericDal<Job>
     {
-        List<Customer> GetCustomerListWithJob();
     }
 }

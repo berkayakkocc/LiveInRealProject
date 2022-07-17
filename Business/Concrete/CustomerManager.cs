@@ -39,6 +39,9 @@ namespace Business.Concrete
             return _customerDal.GetList();
         }
 
-       
+        public List<Customer> GetCustomersListWithJob()
+        {
+            return _customerDal.GetCustomerListWithJob();
+        }
     }
 }

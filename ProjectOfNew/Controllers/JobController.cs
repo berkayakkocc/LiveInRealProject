@@ -11,27 +11,28 @@ using System.Threading.Tasks;
 
 namespace LiveInRealProject.Controllers
 {
-    public class CustomerController : Controller
+    public class JobController : Controller
     {
-        CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+        JobManager jobManager = new JobManager(new EfJobDal());
         public IActionResult Index()
         {
-            var values = customerManager.GetCustomersListWithJob();
+            var values = jobManager.GetList();
             return View(values);
         }
         [HttpGet]
-        public IActionResult AddCustomer()
+        public IActionResult AddJob()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult AddCustomer(Customer customer)
+        public IActionResult AddJob(Job job)
         {
-            CustomerValidator validationRules = new CustomerValidator();
-            ValidationResult results = validationRules.Validate(customer);
+
+            JobValidator validationRules = new JobValidator();
+            ValidationResult results = validationRules.Validate(job);
             if (results.IsValid)
             {
-                customerManager.Add(customer);
+                jobManager.Add(job);
                 return RedirectToAction("Index");
             }
             else
@@ -40,25 +41,27 @@ namespace LiveInRealProject.Controllers
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
-                return View();
             }
+            return View();
         }
-        public IActionResult DeleteCustomer(int id)
+
+        public IActionResult DeleteJob(int id)
         {
-            var value = customerManager.GetById(id);
-            customerManager.Delete(value);
+            var value = jobManager.GetById(id);
+            jobManager.Delete(value);
             return RedirectToAction("Index");
         }
         [HttpGet]
-        public IActionResult UpdateCustomer(int id)
+        public IActionResult UpdateJob(int id)
         {
-            var value = customerManager.GetById(id);
+            var value = jobManager.GetById(id);
+
             return View(value);
         }
         [HttpPost]
-        public IActionResult UpdateCustomer(Customer customer)
+        public IActionResult UpdateJob(Job job)
         {
-            customerManager.Update(customer);
+            jobManager.Update(job);
             return RedirectToAction("Index");
         }
     }
