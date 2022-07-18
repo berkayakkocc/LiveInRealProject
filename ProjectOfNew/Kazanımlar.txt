@@ -1,0 +1,8 @@
+﻿IdentityDbContext:
+IdentityDb Context aslında DbContextden miras alan bir yapıdır.
+Birçok kutuphaneyi elle yazmak yerine bu yapıyı kullanınca kendisi bizim yerimize gerekli olan tablolRarı oluşturuyor.
+artık kolay ve kısa bir yöntem ile çekmemize neden olur.
+
+18.07.22
+--------
+Register sayfası yapıldı

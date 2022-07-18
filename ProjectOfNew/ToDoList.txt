@@ -1,0 +1,13 @@
+﻿*Arama işlemi(Searching)
+Üyelik sistemi(Register System)
+Identity
+Yardım Popup(Help Pop-up)
+Footer
+Ayarlar(Settings)
+Çıkış Yap(Exit)
+Giriş Yap(Login)
+Yeni Üye Kaydı(New register member)
+Admin--> Asp.Net User
+Publish
+Projenin Canlıya çıkması
+Finish
