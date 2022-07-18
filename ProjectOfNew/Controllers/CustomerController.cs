@@ -4,6 +4,7 @@ using DataAccess.EntityFramework;
 using Entities.Concrete;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace LiveInRealProject.Controllers
     public class CustomerController : Controller
     {
         CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+        JobManager jobManager = new JobManager(new EfJobDal());
         public IActionResult Index()
         {
             var values = customerManager.GetCustomersListWithJob();
@@ -22,6 +24,14 @@ namespace LiveInRealProject.Controllers
         [HttpGet]
         public IActionResult AddCustomer()
         {
+            
+            List<SelectListItem> values = (from x in jobManager.GetList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.Name,
+                                               Value = x.JobId.ToString()
+                                           }).ToList();
+            ViewBag.v = values;
             return View();
         }
         [HttpPost]
@@ -52,6 +62,13 @@ namespace LiveInRealProject.Controllers
         [HttpGet]
         public IActionResult UpdateCustomer(int id)
         {
+            List<SelectListItem> values = (from x in jobManager.GetList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.Name,
+                                               Value = x.JobId.ToString()
+                                           }).ToList();
+            ViewBag.v = values;
             var value = customerManager.GetById(id);
             return View(value);
         }

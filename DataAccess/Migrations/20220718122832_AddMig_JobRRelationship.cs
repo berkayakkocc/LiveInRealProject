@@ -2,7 +2,7 @@
 
 namespace DataAccess.Migrations
 {
-    public partial class mig2_addjob : Migration
+    public partial class AddMig_JobRRelationship : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,20 +10,8 @@ namespace DataAccess.Migrations
                 name: "JobId",
                 table: "Customers",
                 type: "int",
-                nullable: true);
-
-            migrationBuilder.CreateTable(
-                name: "Jobs",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Jobs", x => x.Id);
-                });
+                nullable: false,
+                defaultValue: 0);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Customers_JobId",
@@ -35,8 +23,8 @@ namespace DataAccess.Migrations
                 table: "Customers",
                 column: "JobId",
                 principalTable: "Jobs",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
+                principalColumn: "JobId",
+                onDelete: ReferentialAction.Cascade);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -44,9 +32,6 @@ namespace DataAccess.Migrations
             migrationBuilder.DropForeignKey(
                 name: "FK_Customers_Jobs_JobId",
                 table: "Customers");
-
-            migrationBuilder.DropTable(
-                name: "Jobs");
 
             migrationBuilder.DropIndex(
                 name: "IX_Customers_JobId",

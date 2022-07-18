@@ -28,7 +28,8 @@ namespace DataAccess.Repositories
         {
             using Context db = new Context();
             db.Update(entity);
-            db.SaveChanges();        }
+            db.SaveChanges();
+        }
         public T GetById(int id)
         {
             using Context db = new Context();

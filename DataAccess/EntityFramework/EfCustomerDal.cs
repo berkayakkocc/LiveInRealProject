@@ -15,7 +15,7 @@ namespace DataAccess.EntityFramework
     {
         public List<Customer> GetCustomerListWithJob()
         {
-            using (var db=new Context())
+            using (var db = new Context())
             {
                 return db.Customers.Include(x => x.Job).ToList();
             }
