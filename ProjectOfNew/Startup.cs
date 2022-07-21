@@ -1,3 +1,5 @@
+using DataAccess.Concrete;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -9,7 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProjectOfNew
+namespace LiveInRealProject
 {
     public class Startup
     {
@@ -23,6 +25,8 @@ namespace ProjectOfNew
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<Context>();
+            services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
             services.AddControllersWithViews();
         }
 
