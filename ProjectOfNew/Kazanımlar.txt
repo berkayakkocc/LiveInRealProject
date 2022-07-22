@@ -6,3 +6,12 @@ artık kolay ve kısa bir yöntem ile çekmemize neden olur.
 18.07.22
 --------
 Register sayfası yapıldı
+
+Proje bitti görülen başlıklar
+N TİER Architecture 
+GenericRepository
+Fluent Validation
+EntityFrameWork
+Context 
+Migration
+Controller yazımı ve frontend gösterimi
