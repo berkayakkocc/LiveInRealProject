@@ -9,4 +9,4 @@
 **Context (CodeFirst)** <br/>
 **Migration** <br/>
 **CRUD** <br/>
-**Controller Operations** <br/>
+**Web API Controller Operations and Basic Frontend Integration** <br/>
